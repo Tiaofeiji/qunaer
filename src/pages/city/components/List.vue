@@ -36,7 +36,16 @@ export default {
   name: 'List',
   props: {
     cities: Object,
-    hot: Array
+    hot: Array,
+    letter: String
+  },
+  watch: {
+    letter () {
+      if (this.letter) {
+        const element = this.$refs[this.letter][0]
+        this.scroll.scrollToElement(element)
+      }
+    }
   },
   mounted () {
     this.scroll = new Bscroll(this.$refs.wrapper)
